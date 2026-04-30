@@ -6,5 +6,6 @@ import java.util.UUID;
 public record GetUserDto(
         UUID userId,
         String username,
+        String interests,
         LocalDateTime createdAt
 ) {}

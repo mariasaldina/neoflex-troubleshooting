@@ -3,6 +3,7 @@ package com.troubleshooting.user.service;
 import com.troubleshooting.user.dto.CreateUserDto;
 import com.troubleshooting.user.dto.GetUserDto;
 import com.troubleshooting.user.entity.User;
+import com.troubleshooting.user.exception.UserAlreadyExistsException;
 import com.troubleshooting.user.exception.UserNotFoundException;
 import com.troubleshooting.user.mapper.UserMapper;
 import com.troubleshooting.user.repository.UserRepository;
@@ -43,13 +44,17 @@ public class UserService {
 
     @Transactional
     public GetUserDto create(CreateUserDto dto) {
+        User user = this.repository.findByUsername(dto.username());
+        if (user != null) {
+            throw new UserAlreadyExistsException();
+        }
         return mapper.toDto(this.repository.save(new User(dto.username(), hash(dto.password()))));
     }
 
     @Transactional
-    public GetUserDto update(UUID userId, String password) {
+    public GetUserDto update(UUID userId, String interests) {
         User user = this.repository.findById(userId).orElseThrow(UserNotFoundException::new);
-        user.setPassword(hash(password));
+        user.setInterests(interests);
         return mapper.toDto(user);
     }
 

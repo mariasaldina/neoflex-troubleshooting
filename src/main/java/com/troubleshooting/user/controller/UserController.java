@@ -33,7 +33,7 @@ public class UserController {
             @PathVariable UUID userId,
             @RequestBody UpdateUserDto dto
     ) {
-        return ResponseEntity.ok(this.service.update(userId, dto.password()));
+        return ResponseEntity.ok(this.service.update(userId, dto.interests()));
     }
 
     @DeleteMapping("/{userId}")

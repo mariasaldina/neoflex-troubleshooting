@@ -28,10 +28,12 @@ public class User {
     @Id
     private UUID userId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false, columnDefinition = "TEXT")
     private byte[] password;
+
+    private String interests;
     
     @Column(nullable = false)
     private LocalDateTime createdAt;

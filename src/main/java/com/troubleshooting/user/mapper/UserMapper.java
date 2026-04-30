@@ -11,6 +11,7 @@ public class UserMapper {
         return new GetUserDto(
                 user.getUserId(),
                 user.getUsername(),
+                user.getInterests(),
                 user.getCreatedAt()
         );
     }
