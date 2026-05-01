@@ -1,3 +1,5 @@
+## ***Анализ потоков и памяти***
+
 Данные получены путём запуска скрипта load.sh, который нагружает потоки, отправляя запросы  
 на эндпоинт POST /user в течение 10сек.
 
@@ -49,3 +51,21 @@
 3. org.apache.maven.model.Dependency (5,7%)
 4. java.lang.Object[] (4%)
 5. java.util.concurrent.ConcurrentHashMap$Node (3,9%)
+
+---
+
+## ***Панели Graphana***
+
+### ***Собственный дашборд***
+
+![Собственный дашборд](./graphana-images/my_dashboard.png)
+
+| PromQL                                                                                                                    | Метрика                                    |
+|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| `sum by (uri) (rate(http_server_requests_seconds_sum[5m])) / sum by (uri) (rate(http_server_requests_seconds_count[5m]))` | Среднее время ответа по каждому эндпоинту  |
+| `sum(rate(http_server_requests_seconds_count[5m]))`                                                                       | Общая число запросов в секунду (в среднем) |
+| `process_cpu_usage`                                                                                                       | Использование CPU приложением              |
+
+### ***Дашборд с Grafana dashboards***
+
+![Spring Boot дашборд](./graphana-images/spring_boot_dashboard.png)
