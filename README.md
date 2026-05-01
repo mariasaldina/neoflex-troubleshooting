@@ -1,5 +1,5 @@
-https://img.shields.io/coverallsCoverage/github/mariasaldina/neoflex-troubleshooting
-https://sonarcloud.io/api/project_badges/measure?project=mariasaldina_neoflex-troubleshooting&metric=alert_status
+![Coverall Badge](https://img.shields.io/coverallsCoverage/github/mariasaldina/neoflex-troubleshooting)
+![SonarQube Badge](https://sonarcloud.io/api/project_badges/measure?project=mariasaldina_neoflex-troubleshooting&metric=alert_status)
 
 ## ***Описание***
 Простой CRUD-сервис для управления пользователями. Метод POST /user создает повышенную нагрузку  
