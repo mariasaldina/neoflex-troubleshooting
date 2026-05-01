@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+        <sonar.organization>mariasaldina</sonar.organization>
+        <sonar.projectKey>mariasaldina_neoflex-troubleshooting</sonar.projectKey>
 	</properties>
 	<dependencies>
 		<dependency>
