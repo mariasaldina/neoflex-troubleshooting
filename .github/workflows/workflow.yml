@@ -20,16 +20,14 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Maven Test
-      run: mvn clean package jacoco:report
+
+    - name: Build + test + SonarQube analysis
+      run: mvn clean verify sonar:sonar
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v2.3.7
-
-    - name: Official SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v8.0.0
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Upload jar
       uses: actions/upload-artifact@v4
