@@ -31,7 +31,7 @@ public class UserServiceTest {
     void create_success() {
         GetUserDto user = this.userService.create(new CreateUserDto("user", "12345"));
         User savedUser = this.userRepository.findById(user.userId()).orElseThrow(
-                UserNotFoundException::new
+                () -> new UserNotFoundException(user.userId())
         );
 
         assertEquals("user", savedUser.getUsername());
